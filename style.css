@@ -8,8 +8,12 @@ body {
 }
 
 header {
+    display: flex;
     border: 1px solid black;
     height: 50px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: center;
     
 }
 
@@ -20,6 +24,7 @@ main {
     /* grid-template-rows: 1fr 3fr 1fr; */
     grid-template-rows: 100px 1fr 100px;
     border: 1px solid black;
+    background-color: gray;
     flex: 1;
     grid-template-areas: 
         "radio radio info"
@@ -34,15 +39,17 @@ main {
     grid-area: radio;
     justify-content: center;
     outline: 1px solid black;
+    background-color: navajowhite;
 }
 
 .info{
     outline: 1px solid black;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: space-evenly;
-    align-content: center;
+    align-items: center;
     grid-area: info;
+    background-color: navajowhite;
     
 }
 
@@ -65,23 +72,38 @@ main {
 div.controls{
     display: flex;
     outline: 1px solid black;
-    /* grid-row-start: 3;
-    grid-column-start: 1; */
     grid-area: controls;
+    background-color: saddlebrown;
+
 }
 div.flashlight{
     display: flex;
     outline: 1px solid black;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: center;
     /* grid-row-start: 3;
     grid-column-start: 2; */
     grid-area: flashlight;
+    background-color: saddlebrown;
+
+}
+#flashlight-pic{
+    max-width: 100px;
+}
+#coin-slot{
+    max-width: 100px;
 }
 div.game-controls{
     display: flex;
     outline: 1px solid black;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: center;
     /* grid-row-start: 3;
     grid-column-start: 3; */
-    grid-area: game
+    grid-area: game;
+    background-color: darkred;
 }
 footer {
     display: inline-flex;
