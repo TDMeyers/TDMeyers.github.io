@@ -1,1 +1,51 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cave Explorer</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <header>
+        Can you find your way out? 
+    </header>
+
+    <main>
+        <section class="radio">
+            example text
+        </section>
+
+        <section class="info">
+            <p id="health">example text</p>
+            <p id="stamina">example text</p>
+            <p id="movement">example text</p>
+        </section>
+        
+        <section id="game-portal">
+            <canvas id="game-view"></canvas>
+        </section>
+        
+        <div class="controls">
+            <button class="movement" id="left">LEFT</button>
+            <button class="movement" id="right">RIGHT</button>
+            <button class="movement" id="up">UP</button>
+            <button class="movement" id="down">DOWN</button>
+        </div>
+        <div class="flashlight">
+            <button class="light" id="on">TURN ON</button>
+            <button class="light" id="off">TURN OFF</button>
+        </div>
+        <div class="game-controls">
+            <button class="game" id="start">START</button>
+            <button class="game" id="reset">RESET</button>
+        </div>
+    </main>
+    
+    <footer>
+        bottom text
+    </footer>
+</body>
+
+</html>
