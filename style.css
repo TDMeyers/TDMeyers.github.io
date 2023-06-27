@@ -56,6 +56,10 @@ main {
 #game-portal {
     display: flex;
     outline: 1px solid black;
+    z-index: 0;
+    background-image: url("/Resources/floor.png");
+    background-size: repeat;
+    background-color: burlywood;
     /* grid-row: 2 / 3;
     grid-column: 1 / 4; */
     grid-area: portal;
@@ -65,8 +69,8 @@ main {
     /* border: 1px solid black; */
     position: absolute;
     object-fit: contain;
-    z-index: 2;
-    background-color: burlywood
+    z-index: 1;
+    /* background-color: aqua; */
 }
 
 div.controls{
@@ -112,4 +116,3 @@ footer {
     flex-direction: row;
     
 }
-
