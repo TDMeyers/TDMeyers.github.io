@@ -58,7 +58,7 @@ main {
     outline: 1px solid black;
     z-index: 0;
     background-image: url("/Resources/floor.png");
-    background-size: repeat;
+    background-repeat: repeat;
     background-color: burlywood;
     /* grid-row: 2 / 3;
     grid-column: 1 / 4; */
@@ -78,6 +78,7 @@ div.controls{
     outline: 1px solid black;
     grid-area: controls;
     background-color: saddlebrown;
+    justify-content: space-around;
 
 }
 div.flashlight{
