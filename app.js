@@ -178,9 +178,3 @@ function gameLoop(){
     // Declaring time frame for interval checking. 
     window.requestAnimationFrame(gameLoop);
 }
-
-console.log(newPlayer.Sprite.width, newPlayer.Sprite.height);
-console.log(newPlayer.X, newPlayer.Y);
-console.log(enemyGhost.Sprite.width, enemyGhost.Sprite.height);
-console.log(enemyGhost.width, enemyGhost.height);
-console.log(newPlayer, enemyGhost)
