@@ -42,14 +42,39 @@ window.addEventListener('resize', function(event){
     }, true )
 
 // Create class for Player character
-class Player {
-    constructor(name, stamina, health, mvmnt){
-        this.name = name || "Hero",
-        this.stamina = stamina || 25,
-        this.health = health || 10,
-        this.mvmnt = mvmnt || 1
+class Player{
+    constructor(img, x, y, dx, dy, radius){
+        this.Sprite = new Image();
+        this.Sprite.src = img;
+        this.X = x;
+        this.Y = y;
+        this.dx = dx || 20;
+        this.dy = dy || 20;
+        this.radius = radius || 80;
     }
-
+        // Movement functions for Player
+        moveUp(){
+            this.Y -= this.dy;
+        };
+        moveDown(){
+            this.Y += this.dy;
+        }
+        moveLeft(){
+            this.X -= this.dx;
+        }
+        moveRight(){
+            this.X += this.dx;
+        }
+        // Creating collision function for Player 
+        collision() {
+        if (this.X + this.dx > divWidth-this.radius || this.X + this.dx < 0) {
+            this.dx = -this.dx;
+        }
+        
+        if (this.Y + this.dy > divHeight-this.radius || this.Y + this.dy < 0) {
+            this.dy = -this.dy;
+        }
+    }
 }
 // class for randomly moving Spooky object
 class Spooky{
@@ -82,29 +107,46 @@ class Spooky{
 // Create class for Map Objects
 // Create class for flashlight? (maybe - probably not, leaving for stretch goal) 
 // Create variables and DOM display for character stats
-// Create function for collisions
+
 // Create function for detecting game win state
 // Create function for resetting the game
+let newPlayer = new Player("Resources\\cover.png", 100, 100)
 
 // Create function for movement for arrow buttons
 const moveLeft = document.getElementById('left')
 moveLeft.onclick = (event) => {
+    newPlayer.moveLeft();
     console.log('left has been pressed')
 }
 const moveRight = document.getElementById('right')
 moveRight.onclick = (event) => {
+    newPlayer.moveRight();
     console.log('right has been pressed')
 }
 const moveUp = document.getElementById('up')
 moveUp.onclick = (event) => {
+    newPlayer.moveUp();
     console.log('up has been pressed')
 }
 const moveDown = document.getElementById('down')
 moveDown.onclick = (event) => {
+    newPlayer.moveDown();
     console.log('down has been pressed')
 }
 
-let enemyGhost = new Spooky("Resources\\spooky.png", 100, 100);
+let enemyGhost = new Spooky("Resources\\spooky.png", 1000, 500);
+
+// Create function for collisions
+function checkCollide() {
+    if (newPlayer.X < enemyGhost.X + (enemyGhost.radius - 15) &&
+        newPlayer.X + (newPlayer.radius - 15) > enemyGhost.X &&
+        newPlayer.Y < enemyGhost.Y + (enemyGhost.radius - 15) &&
+        (newPlayer.radius - 15) + newPlayer.Y > enemyGhost.Y) {
+            window.alert('Game over!')
+        }
+}
+
+
 // Create start button listener to execute start()
 start.addEventListener('click', gameStart);
 
@@ -114,8 +156,9 @@ start.addEventListener('click', gameStart);
 function gameStart () {
     start.value = 'game started';
     // start gameLoop()
-    
-    enemyGhost.Sprite.onload = window.requestAnimationFrame(gameLoop)
+    // Load in Player and Ghost characters
+    enemyGhost.Sprite.onload = window.requestAnimationFrame(gameLoop);
+    newPlayer.Sprite.onload = window.requestAnimationFrame(gameLoop);
 
 }
 
@@ -124,8 +167,20 @@ function gameLoop(){
     ctx.clearRect(0, 0, divWidth, divHeight);
     // Drawing ghost at coordinates x and y, with defined size.
     ctx.drawImage(enemyGhost.Sprite, enemyGhost.X, enemyGhost.Y, 80, 80);
-    // Start ghost movement and collision
+    // Drawing player
+    ctx.drawImage(newPlayer.Sprite, newPlayer.X, newPlayer.Y, 80, 80)
+    // Start ghost movement and wall? collision
     enemyGhost.moveBounce();
+    // start player wall? collision
+    newPlayer.collision();
+    // start player and ghost collisions
+    checkCollide();
     // Declaring time frame for interval checking. 
     window.requestAnimationFrame(gameLoop);
 }
+
+console.log(newPlayer.Sprite.width, newPlayer.Sprite.height);
+console.log(newPlayer.X, newPlayer.Y);
+console.log(enemyGhost.Sprite.width, enemyGhost.Sprite.height);
+console.log(enemyGhost.width, enemyGhost.height);
+console.log(newPlayer, enemyGhost)
