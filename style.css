@@ -9,7 +9,9 @@ body {
 
 header {
     display: flex;
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    font-family: 'Permanent Marker', cursive;
+    color: brown;
     height: 50px;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -36,6 +38,7 @@ main {
     /* grid-column-start: 1;
     grid-column-end: 3; */
     display: flex;
+    align-items: center;
     grid-area: radio;
     outline: 1px solid black;
     background-color: navajowhite;
@@ -146,9 +149,36 @@ div.game-controls{
 
 footer {
     display: inline-flex;
+    background-color: lightgray;
+    border-radius: 10px;
+    font-family: 'Source Code Pro', monospace;
+    font-weight: bold;
+    color: cadetblue;
     justify-content: space-between;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     flex-direction: row;
     justify-content: space-evenly;
     
+}
+
+#hello {
+    font-family: 'Source Code Pro', monospace;
+    /* font-weight: bold; */
+    color:#0000;
+    background:
+    linear-gradient(-90deg,darkred 5px,#0000 0) 10px 0,
+    linear-gradient(darkred 0 0) 0 0;
+    background-size:calc(var(--n)*1ch) 200%;
+    -webkit-background-clip:padding-box,text;
+    background-clip:padding-box,text;
+    background-repeat:no-repeat;
+    animation: 
+    b .7s infinite steps(1),   
+    t calc(var(--n)*.1s) steps(var(--n)) forwards;
+}
+@keyframes t{
+    from {background-size:0 200%}
+}
+@keyframes b{
+    50% {background-position:0 -100%,0 0}
 }
