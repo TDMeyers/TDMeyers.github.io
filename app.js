@@ -184,13 +184,10 @@ class Spooky{
 // Create class for flashlight? (maybe - probably not, leaving for stretch goal) 
 // Create variables and DOM display for character stats
 
-// Create function for detecting game win state
-// Create function for resetting the game
+
 let newPlayer = new Player("Resources\\cover.png", 100, 100)
 let firstGate = new Gateway("Resources\\gateway.png", (canvasW - 50), (canvasH - 150))
 let randomRocks = [
-    // new Rocks("Resources\\rock.png", 500, 91),
-    // new Rocks("Resources\\rock.png", 1000, 500),
 
     new Rocks("Resources\\rock.png", (Math.floor(Math.random() * (canvasW * 0.95))), (Math.floor(Math.random() * (canvasH * 0.95)))),
     new Rocks("Resources\\rock.png", (Math.floor(Math.random() * (canvasW * 0.95))), (Math.floor(Math.random() * (canvasH * 0.95)))),
@@ -230,7 +227,7 @@ function checkCollide() {
         newPlayer.X + (newPlayer.Sprite.width / 1.7) > enemyGhost.X &&
         newPlayer.Y < enemyGhost.Y + (enemyGhost.Sprite.height / 1.7) &&
         (newPlayer.Sprite.height / 1.7) + newPlayer.Y > enemyGhost.Y) {
-            window.alert('Game over!');
+            window.alert('Game over!'); // Update this later with more flavor text
             document.location.reload();
             clearInterval(interval);
         }
