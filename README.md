@@ -9,9 +9,11 @@ Hosted on Github Pages at https://tdmeyers.github.io/
 ------------------------------------------------------------------
 
 ----------------- Motivations ------------------------------------
+
 I wanted to make a game that would be a stretch of my capabilities as a burgeoning learner and software developer. Having had no prior exposure to code of any sort, I felt this was an excellent benchmarking opportunity to conclude the first Module of the Activate Work / Per Scholas journey. I can confidently say that before beginning the program I would absolutely NOT have been able to produce anything like this - amateur hour it may be - no matter how many hours went in. As it stands, I plan to continue to invest time into polish and development as I believe it is an excellent display of a variety of web developement skills and techniques. This will likely become one of my highlighted portfolio projects, and I'm excstatic that I was able to reach even this point (per my commit today on 6/29/2023). Can't wait to see where I'll be able to take it. Thank you to all the amazing artists and graphics designers that allow their work to be shared under the various creative commons licenses - the world would be far duller without your shine. 
 
 --------------------------- Build Status -------------------------
+
 Currently still very much a W.I.P and only JUST BARELY meets the MVP guidelines of the assignment. I still plan on continuing to add objects such as visible walls and rocks. Also on the docket is improving the overal UI/UX to something more cohesive and staging more animations and text. I'l list out some extra ideas below as they come to me. 
 
 - Lives 
@@ -26,6 +28,7 @@ Repeatedly pressing "start" button incrementally and greatly speeds up ghost cha
 Player character does not have solid interaction with the boundaries, and sometimes slips through. Collision logic likely to blame. 
 
 ---------------------------- Code Style --------------------------
+
 Honestly, as far as I'm aware the code style is pretty standard. I've tried to use Semantic HTML when possible, and keep the logic of the game separated out without too much codependency or overlap. I have also attempted to be verbose in my comments in the JS page, so that the overall layout can be followed. 
 
 --------------------------- Screenshots? ------------------------
@@ -43,6 +46,7 @@ In the spirit of the project I have tried to utilize outside libraries as little
 One point that I really tried to focus on in this project is making it display-dynamic and responsive. I have tried to hardcode as few values as possible and thus the overall look and feel should change only slightly, within reason, between various sizes of displays.  
 
 -------------------------- Code Ex: -------------------------------
+
 This is a snapshot of the loop that begins the "game run", which draws the objects on screen and begins movement and checking for various collisions and interactions. 
 
 -------------------------------------------------------------------
@@ -82,7 +86,7 @@ function gameLoop(){
 By looping through and using the RequestAnimationFrame, I can time the redrawing of the canvas to the refresh rate of the browser and display and attempt to ensure that all objects are kept onscreen at roughly the same rate and method. This also keeps the function checks consistent at the same pace so that one check does not happen significantly faster or slower than the others. 
 
 --------------------------------------------------------------------
--------------------------- Installation ---------------------------
+-------------------------- Installation ----------------------------
 
 This will be to host from your own GitHub pages.io site, cloned from this project! The initial configuration steps can also be found on https://pages.github.com/ 
 
@@ -156,3 +160,10 @@ Awesome pixel art explorer credit to Chr0ma Dave at
 https://chroma-dave.itch.io/pixelart-hiker
 
 Portal art from: https://www.pngall.com/portal-png/download/33537
+
+
+Typewriter CSS animation tutorial from: 
+
+https://dev.to/afif/a-multi-line-css-only-typewriter-effect-3op3
+
+Additional fonts acquired from Google Fonts
