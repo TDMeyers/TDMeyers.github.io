@@ -14,12 +14,13 @@ I wanted to make a game that would be a stretch of my capabilities as a burgeoni
 
 --------------------------- Build Status -------------------------
 
-Currently still very much a W.I.P and only JUST BARELY meets the MVP guidelines of the assignment. I still plan on continuing to add objects such as visible walls and rocks. Also on the docket is improving the overal UI/UX to something more cohesive and staging more animations and text. I'l list out some extra ideas below as they come to me. 
+Currently still very much a W.I.P. Also on the docket is improving the overal UI/UX to something more cohesive and staging more animations and text. I'l list out some extra ideas below as they come to me. 
 
 - Lives 
 - Extra levels
 - Timed/limited battery
 - Stamina tracker
+- Flashlight object
 
 ----------------------- Current Bugs/Challenges -------------------
 
