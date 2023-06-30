@@ -83,6 +83,7 @@ By looping through and using the RequestAnimationFrame, I can time the redrawing
 
 --------------------------------------------------------------------
 -------------------------- Installation ---------------------------
+
 This will be to host from your own GitHub pages.io site, cloned from this project! The initial configuration steps can also be found on https://pages.github.com/ 
 
 - Make a new github repo for your project, naming it username.github.io, remmeber to keep it public so that it can be deployed. 
