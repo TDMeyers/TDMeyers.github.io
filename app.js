@@ -51,15 +51,15 @@ window.addEventListener('resize', function(event){
 
 // Create class for Player character
 class Player{
-    constructor(img, x, y, dx, dy, radius){
+    constructor(img, x, y, dx, dy){
         this.Sprite = new Image(80, 80);
         this.Sprite.src = img;
         this.X = x;
         this.Y = y;
-        this.dx = dx || (canvasW / 15);
-        this.dy = dy || (canvasH / 10);
-        // this.radius = radius || 80;
-    }
+        this.dx = dx || (canvasW / 20);
+        this.dy = dy || (canvasH / 15);
+        }
+
         // Movement functions for Player
         moveUp(){
             this.Y -= this.dy;
@@ -73,6 +73,7 @@ class Player{
         moveRight(){
             this.X += this.dx;
         }
+
         // Creating collision function for Player + Boundaries
         collision() {
             // Checking boundaries for X axis right side
@@ -80,17 +81,16 @@ class Player{
             // preventing further right movement
             this.X --;
             // Checking boundaries for X axis left side 
-        } else if (this.X + this.dx <= (0+ this.Sprite.width)){
+        } else if (this.X + this.dx <= this.Sprite.width){
             // preventing further left movement
             this.X ++;
-            
         }
             // Checking boundaries for Y axis top side
         if (this.Y + (this.dy / 2) > (canvasH-this.Sprite.height)) {
             // preventing further downwards movement
             this.Y --;
             // Checking boundaries for Y axis top side
-        } else if (this.Y + this.dy <= (0 + this.Sprite.height)){
+        } else if (this.Y + this.dy <= this.Sprite.height){
             // preventing further upwards movement
             this.Y ++;
         } 
@@ -103,6 +103,30 @@ class Rocks{
         this.X = x;
         this.Y = y;
     }
+
+    playerCollision(){
+        if (
+            newPlayer.X < this.X + (this.Sprite.width / 2) &&
+            newPlayer.X + newPlayer.Sprite.width > this.X &&
+            newPlayer.Y < this.Y + (this.Sprite.height / 2) &&
+            newPlayer.Y + newPlayer.Sprite.height > this.Y
+        ){
+            newPlayer.X ++
+            newPlayer.Y --
+    }
+}
+
+    ghostCollision(){
+        if (
+            enemyGhost.X < this.X + (this.Sprite.width / 2) &&
+            enemyGhost.X + (enemyGhost.Sprite.width / 2) > this.X &&
+            enemyGhost.Y < this.Y + (this.Sprite.height / 2) &&
+            enemyGhost.Y + (enemyGhost.Sprite.height / 2) > this.Y
+            ){
+            enemyGhost.dy = -enemyGhost.dy;
+            enemyGhost.dx = -enemyGhost.dx;
+        }
+    }
 }
 class Gateway{
     constructor(img, x, y){
@@ -112,7 +136,12 @@ class Gateway{
         this.Y = y;
     }
     gateColision(){
-        if (newPlayer.X + newPlayer.dx >= this.X && newPlayer.Y + newPlayer.dx >= this.Y) {
+        if (
+            newPlayer.X < this.X + (this.Sprite.width / 2) &&
+            newPlayer.X + (newPlayer.Sprite.width / 2) > this.X &&
+            newPlayer.Y < this.Y + (this.Sprite.height / 2) &&
+            newPlayer.Y + (newPlayer.Sprite.height / 2) > this.Y
+            ) {
             window.alert(`Into the unknown! (You've lived another day)`);
             document.location.reload();
             clearInterval(interval);
@@ -123,13 +152,13 @@ class Gateway{
     
 // class for randomly moving Spooky object
 class Spooky{
-    constructor(img, x, y, dx, dy, radius){
+    constructor(img, x, y, dx, dy){
         this.Sprite = new Image(80, 80);
         this.Sprite.src = img;
         this.X = x;
         this.Y = y;
-        this.dx = dx || 1;
-        this.dy = dy || 1;
+        this.dx = dx || 0.7;
+        this.dy = dy || 0.7;
         // this.radius = radius || 80;
     }
 
@@ -158,8 +187,19 @@ class Spooky{
 // Create function for detecting game win state
 // Create function for resetting the game
 let newPlayer = new Player("Resources\\cover.png", 100, 100)
-let firstGate = new Gateway("Resources\\gateway.png", (canvasW - 25), (canvasH - 100))
+let firstGate = new Gateway("Resources\\gateway.png", (canvasW - 50), (canvasH - 150))
+let randomRocks = [
+    // new Rocks("Resources\\rock.png", 500, 91),
+    // new Rocks("Resources\\rock.png", 1000, 500),
 
+    new Rocks("Resources\\rock.png", (Math.floor(Math.random() * (canvasW * 0.95))), (Math.floor(Math.random() * (canvasH * 0.95)))),
+    new Rocks("Resources\\rock.png", (Math.floor(Math.random() * (canvasW * 0.95))), (Math.floor(Math.random() * (canvasH * 0.95)))),
+    new Rocks("Resources\\rock.png", (Math.floor(Math.random() * (canvasW * 0.95))), (Math.floor(Math.random() * (canvasH * 0.95)))),
+    new Rocks("Resources\\rock.png", (Math.floor(Math.random() * (canvasW * 0.95))), (Math.floor(Math.random() * (canvasH * 0.95)))),
+    new Rocks("Resources\\rock.png", (Math.floor(Math.random() * (canvasW * 0.95))), (Math.floor(Math.random() * (canvasH * 0.95)))),
+    new Rocks("Resources\\rock.png", (Math.floor(Math.random() * (canvasW * 0.95))), (Math.floor(Math.random() * (canvasH * 0.95)))),
+]
+console.log(randomRocks)
 // Create function for movement for arrow buttons
 const moveLeft = document.getElementById('left')
 moveLeft.onclick = (event) => {
@@ -182,7 +222,7 @@ moveDown.onclick = (event) => {
     console.log('down has been pressed')
 }
 
-let enemyGhost = new Spooky("Resources\\spooky.png", (canvasW * 0.8), (canvasH * 0.8));
+let enemyGhost = new Spooky("Resources\\spooky.png", (canvasW * 0.75), (canvasH * 0.75));
 
 // Create function for collisions
 function checkCollide() {
@@ -210,7 +250,7 @@ function gameStart () {
     enemyGhost.Sprite.onload = window.requestAnimationFrame(gameLoop);
     newPlayer.Sprite.onload = window.requestAnimationFrame(gameLoop);
     firstGate.Sprite.onload = window.requestAnimationFrame(gameLoop);
-
+    randomRocks.forEach(i => i.Sprite.onload = window.requestAnimationFrame(gameLoop))
 }
 
 function gameLoop(){
@@ -221,7 +261,11 @@ function gameLoop(){
     // Drawing player
     ctx.drawImage(newPlayer.Sprite, newPlayer.X, newPlayer.Y, 80, 80);
 
-    ctx.drawImage(firstGate.Sprite, firstGate.X, firstGate.Y, 25, 100)
+    ctx.drawImage(firstGate.Sprite, firstGate.X, firstGate.Y, 50, 150);
+
+    randomRocks.forEach(element => ctx.drawImage(element.Sprite, element.X, element.Y, 75, 75));
+    randomRocks.forEach(element => element.playerCollision());
+    randomRocks.forEach(element => element.ghostCollision());
     // Start ghost movement and wall? collision
     enemyGhost.moveBounce();
     // start player wall? collision
@@ -230,7 +274,6 @@ function gameLoop(){
     firstGate.gateColision();
 
     checkCollide();
-
     // Declaring time frame for interval checking. 
     window.requestAnimationFrame(gameLoop);
 }

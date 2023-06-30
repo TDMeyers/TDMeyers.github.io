@@ -2,7 +2,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    height: 95vh;
+    height: 98vh;
     background-color: whitesmoke;
     margin: 15px;
 }
@@ -37,7 +37,6 @@ main {
     grid-column-end: 3; */
     display: flex;
     grid-area: radio;
-    justify-content: center;
     outline: 1px solid black;
     background-color: navajowhite;
 }
@@ -75,12 +74,18 @@ main {
 
 div.controls{
     display: flex;
+    flex-wrap: wrap;
     outline: 1px solid black;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 50px;
+    padding-right: 50px;
     grid-area: controls;
     background-color: saddlebrown;
     justify-content: space-around;
-
+    align-items: center;
 }
+
 div.flashlight{
     display: flex;
     outline: 1px solid black;
@@ -93,12 +98,40 @@ div.flashlight{
     background-color: saddlebrown;
 
 }
+
+button{
+    cursor: pointer;
+    border-radius: 12px;
+    background-color: antiquewhite;
+}
+
+button.movement{
+    /* display: inline-block; */
+    border-radius: 50%;
+    height: 40%;
+    width: 40%;
+}
+
+button#right{
+    order: 4;
+}
+
+button#up{
+    align-self: flex-start;
+}
+
+button#down{
+    align-self: flex-end;
+}
+
 #flashlight-pic{
     max-width: 100px;
 }
+
 #coin-slot{
     max-width: 100px;
 }
+
 div.game-controls{
     display: flex;
     outline: 1px solid black;
@@ -110,10 +143,12 @@ div.game-controls{
     grid-area: game;
     background-color: darkred;
 }
+
 footer {
     display: inline-flex;
     justify-content: space-between;
     border: 1px solid black;
     flex-direction: row;
+    justify-content: space-evenly;
     
 }

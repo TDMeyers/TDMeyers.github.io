@@ -19,6 +19,12 @@ Currently still very much a W.I.P and only JUST BARELY meets the MVP guidelines 
 - Timed/limited battery
 - Stamina tracker
 
+----------------------- Current Bugs/Challenges -------------------
+
+Repeatedly pressing "start" button incrementally and greatly speeds up ghost character. Multiple attempts to reset related values and timers have proven unsuccessful. 
+
+Player character does not have solid interaction with the boundaries, and sometimes slips through. Collision logic likely to blame. 
+
 ---------------------------- Code Style --------------------------
 Honestly, as far as I'm aware the code style is pretty standard. I've tried to use Semantic HTML when possible, and keep the logic of the game separated out without too much codependency or overlap. I have also attempted to be verbose in my comments in the JS page, so that the overall layout can be followed. 
 
