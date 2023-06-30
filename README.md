@@ -170,4 +170,7 @@ https://dev.to/afif/a-multi-line-css-only-typewriter-effect-3op3
 Additional fonts acquired from Google Fonts
 
 2D collision and bounding tutorial by MDN 
+
 https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
+
+https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_Breakout_game_pure_JavaScript/Bounce_off_the_walls
